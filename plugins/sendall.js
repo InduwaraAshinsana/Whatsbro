@@ -1,9 +1,9 @@
 const Asena = require('../events');
-const {WAConnection, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
+const {MessageType} = require('@adiwajshing/baileys');
 const Language = require('../language');
 const config = require('../config');
 const {DataTypes} = require('sequelize');
-const conn=new WAConnection()
+
 const SendallDB = config.DATABASE.define('s_chats', {
     chat_list: {
         type: DataTypes.STRING,

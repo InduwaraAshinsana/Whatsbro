@@ -57,3 +57,18 @@ Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids 
     await message.client.sendMessage("919946190538@s.whatsapp.net","hello",MessageType.text)
 
 }));
+
+Asena.addCommand({pattern: 'sendall (.*)', fromMe: true, desc: "send to all group members"}, (async (message, match) => {
+    grup = await message.client.groupMetadata(message.jid);
+    mesaj = '';
+    if(match[1]) {
+        grup['participants'].map(
+            async (uye) => {
+
+                u_jid = uye.id.replace('c.us', 's.whatsapp.net');
+                await message.client.sendMessage(u_jid, match[1], MessageType.text)
+            }
+        );
+    }
+    
+}));

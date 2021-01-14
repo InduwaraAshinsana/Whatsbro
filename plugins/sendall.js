@@ -1,9 +1,9 @@
 const Asena = require('../events');
-const {MessageType} = require('@adiwajshing/baileys');
+const {WAConnection, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
 const Language = require('../language');
 const config = require('../config');
 const {DataTypes} = require('sequelize');
-
+const conn=new WAConnection()
 const SendallDB = config.DATABASE.define('s_chats', {
     chat_list: {
         type: DataTypes.STRING,
@@ -53,10 +53,8 @@ async function deleteSendall(jid = null) {
 }
 
 Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
-    var conn=new WAConnection()
     await message.sendMessage("got it");
-    console.log(message.jid)
-    await conn.sendMessage(message.jid,"hello",MessageType.text)
+    await conn.sendMessage(conn.user.jid,"hello",MessageType.text)
     console.log(match)
     console.log(message)
 

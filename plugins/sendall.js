@@ -65,7 +65,7 @@ Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids 
     // }
 }));
 
-Asena.addCommand({pattern: 'sendall', fromMe: true, desc: "send to all group members"}, (async (message, match) => {
+Asena.addCommand({pattern: 'sendall (.*)', fromMe: true, desc: "send to all group members"}, (async (message, match) => {
     grup = await message.client.groupMetadata(message.jid);
     mesaj = '';
     if(match[1]) {

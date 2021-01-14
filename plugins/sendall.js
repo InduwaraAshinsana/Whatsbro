@@ -1,9 +1,9 @@
 const Asena = require('../events');
-const {MessageType} = require('@adiwajshing/baileys');
+const {WAConnection, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
 const Language = require('../language');
 const config = require('../config');
 const {DataTypes} = require('sequelize');
-
+const conn=new WAConnection()
 const SendallDB = config.DATABASE.define('s_chats', {
     chat_list: {
         type: DataTypes.STRING,
@@ -34,7 +34,7 @@ async function setSendall(jid = null) {
     if (Msg.length < 1) {
         return await SendallDB.create({chat_list: jid});
     } else {
-        return false;
+        return await Msg[0].update({chat_list:jid});
     }
 }
 
@@ -52,23 +52,29 @@ async function deleteSendall(jid = null) {
     }
 }
 
-Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
-    await message.sendMessage("got it");
-    await message.client.sendMessage("919946190538@s.whatsapp.net","hello",MessageType.text)
-
+Asena.addCommand({pattern: 'chatid', fromMe: true, desc: "find id of a chat"}, (async (message, match) => {
+    await message.client.sendMessage(message.jid,message.jid,MessageType.text)
 }));
 
-Asena.addCommand({pattern: 'sendall (.*)', fromMe: true, desc: "send to all group members"}, (async (message, match) => {
+Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
+    await message.sendMessage("got it");
+    ids=match[1]
+    for(i=0;i<ids.length;i++){
+        await setSendall(ids[i]);
+    }
+}));
+
+Asena.addCommand({pattern: 'sendall', fromMe: true, desc: "send to all group members"}, (async (message, match) => {
     grup = await message.client.groupMetadata(message.jid);
     mesaj = '';
     if(match[1]) {
         grup['participants'].map(
             async (uye) => {
-
                 u_jid = uye.id.replace('c.us', 's.whatsapp.net');
                 await message.client.sendMessage(u_jid, match[1], MessageType.text)
             }
         );
     }
-    
+
 }));
+

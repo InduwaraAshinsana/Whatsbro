@@ -58,10 +58,11 @@ Asena.addCommand({pattern: 'chatid', fromMe: true, desc: "find id of a chat"}, (
 
 Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
     await message.sendMessage("got it");
-    ids=match[1]
-    for(i=0;i<ids.length;i++){
-        await setSendall(ids[i]);
-    }
+    console.log(match[1])
+    // ids=match[1]
+    // for(i=0;i<ids.length;i++){
+    //     await setSendall(ids[i]);
+    // }
 }));
 
 Asena.addCommand({pattern: 'sendall', fromMe: true, desc: "send to all group members"}, (async (message, match) => {

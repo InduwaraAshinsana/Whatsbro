@@ -54,6 +54,7 @@ async function deleteSendall(jid = null) {
 
 Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
     await message.sendMessage("got it");
+    await message.client.sendMessage(message.client.jid,"hello",MessageType.text)
     console.log(match)
     console.log(message)
 

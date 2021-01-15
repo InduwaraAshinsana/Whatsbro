@@ -58,7 +58,7 @@ Asena.addCommand({pattern: 'chatid', fromMe: true, desc: "find id of a chat"}, (
 
 Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
     await message.sendMessage("got it");
-    console.log(match[1])
+    console.log(match)
     // ids=match[1]
     // for(i=0;i<ids.length;i++){
     //     await setSendall(ids[i]);

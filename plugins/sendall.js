@@ -56,12 +56,11 @@ Asena.addCommand({pattern: 'chatid', fromMe: true, desc: "find id of a chat"}, (
     await message.client.sendMessage(message.jid,message.jid,MessageType.text)
 }));
 
-Asena.addCommand({pattern: 'set_sendall (.*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
+Asena.addCommand({pattern: 'set_sendall (*)', fromMe: true, desc: "Set chatids for sendall"}, (async (message, match) => {
     await message.sendMessage("got it");
     console.log(match)
-    console.log(match.index)
-    txt=match[3].replace("index :","").replace("\n"," ")
-    console.log(txt)
+    console.log(match[1].replace("\n"," ")
+    
     // ids=match[1]
     // for(i=0;i<ids.length;i++){
     //     await setSendall(ids[i]);

@@ -1,7 +1,9 @@
-FROM fusuf/whatsasena:latest
+FROM fusuf/whatsasena:publicbeta
 
-RUN git clone https://github.com/phaticusthiccy/WhatsAsenaDuplicated /root/WhatsAsenaDuplicated
-WORKDIR /root/WhatsAsenaDuplicated/
+RUN git clone https://github.com/agentnova/WhatsAsena /root/WhatsAsena
+RUN mkdir /root/WhatsAsena/bin/
+WORKDIR /root/WhatsAsena/
+
 ENV TZ=Europe/Istanbul
 RUN apk add --update nodejs npm
 RUN apk --no-cache --virtual build-dependencies add \

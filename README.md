@@ -5,7 +5,7 @@
 <p align="center">
     WhatsAsena project - Makes it easy and fun to use Whatsapp. Also first userbot for Whatsapp
     <br>
-        Reserved |
+        Reservedr |
         Reserved |
         <a href="https://t.me/WHATSASENA">Telegram Channel</a> |
         <a href="https://t.me/AsenaSupport">Telegram Group</a> |

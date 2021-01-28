@@ -139,7 +139,7 @@
             "YT_DESC": "It searchs on YouTube.",
             "NEED_WORDS": "```Please write a few words!```",
             "GETTING_VIDEOS": "```I'm bringing videos...```",
-            "NOT_FOUND": "*I couldn't find anything :(*",
+            "NOT_FOUND": "*මොකුත් හම්බුනේ නැ :(*",
             "SEARCHING": "* 🔎 Searching...*",
             "WIKI_DESC": "Searches on Wikipedia.",
             "IMG_DESC": "Takes Google pics.",
